@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title th:text="${titulo}"></title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+	integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+	crossorigin="anonymous">
+</head>
+<body>
+		<div class="container mt-5"></div>
+			<h3 class= " text-center" th:text="${encabezado}"></h3>
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>Nombre</th>
+						<th>Apellidos</th>
+						<th>Edad</th>
+						<th>Curso</th>
+					
+					</tr>
+			
+				</thead>
+				
+				<tbody>
+					<tr th:each="estudiante : ${estudiantes}">
+						<td th:text="${estudiante.nombre}" ></td>
+						<td th:text="${estudiante.apellidos}" ></td>
+						<td th:text="${estudiante.edad}" ></td>
+						<td th:text="${estudiante.curso}" ></td>
+					</tr>
+				
+				
+				</tbody>
+				
+			</table>
+</body>
+</html>

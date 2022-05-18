@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title th:text="${titulo}"></title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+	integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-6">
+			
+			<div class="mt-5" th:object="${estudiante}" th:remove="tag">
+				<ul th:id="${#fields.hasErrors('*')}" class="alert alert-danger" role="alert">
+					<p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
+				
+				</ul>
+			
+			
+			</div>
+				<div class="card mt-5">
+					<div class="card-header text-center">Formulario de
+						Estudiantes</div>
+
+					<div class="card-body">
+						<form th:href="@{/}" th:object="${estudiante}" method="POST">
+							<div class="row form-group">
+								<label class="col-md-3">Nombre</label> <input type="text"
+									th:field="*{nombre}" class="form-control col-md-8"
+									th:errorclass="'form-control alert-danger'"> <small
+									class="form-text text-danger offset-3"
+									th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+							</div>
+
+							<div class="row form-group">
+								<label class="col-md-3">Apellidos</label> <input type="text"
+									th:field="*{apellidos}" class="form-control col-md-8"
+									th:errorclass="'form-control alert-danger'"> <small
+									class="form-text text-danger offset-3"
+									th:if="${#fields.hasErrors('apellidos')}"
+									th:errors="*{apellidos}"></small>
+							</div>
+
+							<div class="row form-group">
+								<label class="col-md-3">Edad</label> <input type="text"
+									th:field="*{edad}" class="form-control col-md-8"
+									th:errorclass="'form-control alert-danger'"> <small
+									class="form-text text-danger offset-3"
+									th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}"></small>
+							</div>
+							<div class="row form-group">
+								<label class="col-md-3">Curso</label> <input type="text"
+									th:field="*{curso}" class="form-control col-md-8"
+									th:errorclass="'form-control alert-danger'"> <small
+									class="form-text text-danger offset-3"
+									th:if="${#fields.hasErrors('curso')}" th:errors="*{curso}"></small>
+								<button type="submit"
+									class="btn btn-success col-md-8 offset-3 mt-3">Guardar</button>
+							</div>
+
+
+						</form>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>
