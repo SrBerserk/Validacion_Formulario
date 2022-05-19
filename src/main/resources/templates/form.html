@@ -12,16 +12,20 @@
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-6">
-			
-			<div class="mt-5" th:object="${estudiante}" th:remove="tag">
-				<ul th:id="${#fields.hasErrors('*')}" class="alert alert-danger" role="alert">
-					<p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
-				
-				</ul>
-			
-			
-			</div>
+
+				<!--  <div class="mt-5" th:object="${estudiante}" th:remove="tag">
+					<ul th:id="${#fields.hasErrors('*')}" class="alert alert-danger"
+						role="alert">
+						<p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
+
+					</ul>-->
+
+
+				</div>
 				<div class="card mt-5">
+				
+				<div class="alert alert-success" th:if="${success != null}" th:text="${success}"></div>
+				
 					<div class="card-header text-center">Formulario de
 						Estudiantes</div>
 
@@ -30,36 +34,44 @@
 							<div class="row form-group">
 								<label class="col-md-3">Nombre</label> <input type="text"
 									th:field="*{nombre}" class="form-control col-md-8"
-									th:errorclass="'form-control alert-danger'"> <small
-									class="form-text text-danger offset-3"
-									th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+									th:errorclass="'form-control alert-danger'">
+								<!--  <small class="form-text text-danger offset-3" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small> -->
+								<small class="form-text text-danger offset-3" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+
 							</div>
 
 							<div class="row form-group">
 								<label class="col-md-3">Apellidos</label> <input type="text"
 									th:field="*{apellidos}" class="form-control col-md-8"
-									th:errorclass="'form-control alert-danger'"> <small
-									class="form-text text-danger offset-3"
-									th:if="${#fields.hasErrors('apellidos')}"
-									th:errors="*{apellidos}"></small>
+									th:errorclass="'form-control alert-danger'">
+									<small class="form-text text-danger offset-3" th:if="${#fields.hasErrors('apellidos')}" th:errors="*{apellidos}"></small>
 							</div>
 
 							<div class="row form-group">
 								<label class="col-md-3">Edad</label> <input type="text"
 									th:field="*{edad}" class="form-control col-md-8"
-									th:errorclass="'form-control alert-danger'"> <small
-									class="form-text text-danger offset-3"
-									th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}"></small>
+									th:errorclass="'form-control alert-danger'">
+									<small class="form-text text-danger offset-3" th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}"></small>
 							</div>
 							<div class="row form-group">
 								<label class="col-md-3">Curso</label> <input type="text"
 									th:field="*{curso}" class="form-control col-md-8"
-									th:errorclass="'form-control alert-danger'"> <small
-									class="form-text text-danger offset-3"
-									th:if="${#fields.hasErrors('curso')}" th:errors="*{curso}"></small>
-								<button type="submit"
-									class="btn btn-success col-md-8 offset-3 mt-3">Guardar</button>
+									th:errorclass="'form-control alert-danger'">
+								<small class="form-text text-danger offset-3" th:if="${#fields.hasErrors('curso')}" th:errors="*{curso}"></small>
 							</div>
+
+							 <div class="row form-group">
+								<label class="col-md-3">Fecha Ingreso</label> <input type="date"
+									th:field="*{fechaIngreso}" class="form-control col-md-8"
+									th:errorclass="'form-control alert-danger'">
+									<small class="form-text text-danger offset-3" th:if="${#fields.hasErrors('fechaIngreso')}" th:errors="*{fechaIngreso}"></small>
+			
+							</div> 
+							
+
+
+							<button type="submit"
+								class="btn btn-success col-md-8 offset-3 mt-3">Guardar</button>
 
 
 						</form>
@@ -67,6 +79,9 @@
 
 
 				</div>
+				<a th:href="@{/list}">  
+				<button class="btn btn-success mt-5">Listado de Estudiantes</button> 
+				</a>
 			</div>
 		</div>
 

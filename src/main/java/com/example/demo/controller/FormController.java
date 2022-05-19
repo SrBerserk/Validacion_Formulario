@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.dao.IEstudianteDAO;
 import com.example.demo.entity.Estudiante;
@@ -33,14 +34,15 @@ public class FormController {
 	}
 	
 	@PostMapping("/")
-	public String guardar(@Valid Estudiante estudiante, BindingResult result) {
+	public String guardar(@Valid Estudiante estudiante, BindingResult result, RedirectAttributes flash) {
 		
 		if(result.hasErrors()) {
 			return "form";
 		}
 		
 		estudianteService.guardar(estudiante);
-		return "redirect:/list";
+		flash.addFlashAttribute("success","Estudiante guardado con éxito!");
+		return "redirect:/";
 	}
 	
 	@GetMapping("/list")
